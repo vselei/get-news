@@ -19,11 +19,28 @@ const NewsProvider = ({ children }) => {
       } = await axios(url);
       setNews(articles);
       setNewsTotal(totalResults);
+      setPage(1)
     };
     requestAPI();
   }, [category]);
 
+  useEffect(() => {
+    const requestAPI = async () => {
+      const url = `https://newsapi.org/v2/top-headlines?country=br&category=${category}&pageSize=9&page=${page}&apiKey=${
+        import.meta.env.VITE_API_KEY
+      }`;
+      const {
+        data: { articles, totalResults }
+      } = await axios(url);
+      setNews(articles);
+      setNewsTotal(totalResults);
+    };
+    requestAPI();
+  }, [page]);
+
   const handleCategoryChange = e => setCategory(e.target.value);
+
+  const handleChangePagination = (e, value) => setPage(value);
 
   return (
     <NewsContext.Provider
@@ -31,7 +48,9 @@ const NewsProvider = ({ children }) => {
         handleCategoryChange,
         category,
         news,
-        newsTotal
+        newsTotal,
+        handleChangePagination,
+        page
       }}
     >
       {children}
