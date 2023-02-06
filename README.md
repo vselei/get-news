@@ -3,7 +3,7 @@
 ### Features
 - [x] Criação do formulário
 - [x] Consulta a API (News API)
-= [x] Paginação
+- [x] Paginação
 
 ##
 
