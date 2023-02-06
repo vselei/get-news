@@ -5,7 +5,8 @@ import useNews from '../hooks/useNews';
 import News from './News';
 
 const NewsList = () => {
-  const { news } = useNews();
+  const { news, newsTotal } = useNews();
+  const pages = Math.ceil(newsTotal / 9);
 
   return (
     <>
@@ -24,7 +25,7 @@ const NewsList = () => {
         alignItems={'center'}
         marginY={5}
       >
-        <Pagination count={10} color={'primary'} />
+        <Pagination count={pages} color={'primary'} />
       </Stack>
     </>
   );
