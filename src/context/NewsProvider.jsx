@@ -12,7 +12,9 @@ const NewsProvider = ({ children }) => {
       const url = `https://newsapi.org/v2/top-headlines?country=br&category=${category}&apiKey=${
         import.meta.env.VITE_API_KEY
       }`;
-      const { data: articles } = await axios(url);
+      const {
+        data: { articles }
+      } = await axios(url);
       setNews(articles);
     };
     requestAPI();
@@ -24,7 +26,8 @@ const NewsProvider = ({ children }) => {
     <NewsContext.Provider
       value={{
         handleCategoryChange,
-        category
+        category,
+        news
       }}
     >
       {children}
