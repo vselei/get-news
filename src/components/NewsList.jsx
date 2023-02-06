@@ -1,5 +1,6 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import { Pagination, Stack } from '@mui/material';
 import useNews from '../hooks/useNews';
 import News from './News';
 
@@ -16,6 +17,15 @@ const NewsList = () => {
           <News key={singleNews.url} news={singleNews} />
         ))}
       </Grid>
+      <Stack
+        spacing={2}
+        direction="row"
+        justifyContent={'center'}
+        alignItems={'center'}
+        marginY={5}
+      >
+        <Pagination count={10} color={'primary'} />
+      </Stack>
     </>
   );
 };
