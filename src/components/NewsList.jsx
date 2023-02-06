@@ -5,14 +5,13 @@ import News from './News';
 
 const NewsList = () => {
   const { news } = useNews();
-  console.log(news)
 
   return (
     <>
       <Typography textAlign="center" marginY={5} variant="h4" component="h2">
         Últimas Notícias
       </Typography>
-      <Grid container direction='column'>
+      <Grid container spacing={2}>
         {news.map(singleNews => (
           <News key={singleNews.url} news={singleNews} />
         ))}
