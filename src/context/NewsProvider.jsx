@@ -3,7 +3,20 @@ import { useState, useEffect, createContext } from 'react';
 const NewsContext = createContext();
 
 const NewsProvider = ({ children }) => {
-  return <NewsContext.Provider value={{}}>{children}</NewsContext.Provider>;
+  const [category, setCategory] = useState('general');
+
+  const handleCategoryChange = e => setCategory(e.target.value);
+
+  return (
+    <NewsContext.Provider
+      value={{
+        handleCategoryChange,
+        category
+      }}
+    >
+      {children}
+    </NewsContext.Provider>
+  );
 };
 
 export { NewsProvider };

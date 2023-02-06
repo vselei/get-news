@@ -6,6 +6,7 @@ import {
   Button,
   Box
 } from '@mui/material';
+import useNews from '../hooks/useNews';
 
 const CATEGORIES = [
   { value: 'general', label: 'Geral' },
@@ -18,11 +19,17 @@ const CATEGORIES = [
 ];
 
 const Form = () => {
+  const { category, handleCategoryChange } = useNews();
+
   return (
     <form>
       <FormControl fullWidth>
         <InputLabel>Categoria</InputLabel>
-        <Select label="Categoria">
+        <Select
+          label="Categoria"
+          onChange={handleCategoryChange}
+          value={category}
+        >
           {CATEGORIES.map(cat => (
             <MenuItem key={cat.value} value={cat.value}>
               {cat.label}
